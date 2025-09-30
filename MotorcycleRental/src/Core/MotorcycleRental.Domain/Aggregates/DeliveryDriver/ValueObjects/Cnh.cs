@@ -8,11 +8,11 @@ namespace MotorcycleRental.Domain.Aggregates.DeliveryDriver.ValueObjects
 {
     public class Cnh
     {
-        public string TypeCnh { get; set; }
+        public string CnhType { get; set; }
         public string CnhNumber { get; set; }
-        public Cnh(string typeCnh, string cnhNumber)
+        public Cnh(string cnhType, string cnhNumber)
         {
-            TypeCnh = typeCnh;
+            CnhType = cnhType;
             CnhNumber = cnhNumber;
         }
     }

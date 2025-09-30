@@ -16,7 +16,7 @@ namespace MotorcycleRental.Domain.Aggregates.DeliveryDriver
         public Cnh Cnh { get; private set; }
         public string CnhImage { get; private set; }
 
-        public DeliveryDriver(string id, string name, string cnpj, DateTime birthDate, string typeCnh, 
+        public DeliveryDriver(string id, string name, string cnpj, DateTime birthDate, string cnhType, 
             string numberCnh, string cnhImage)
         {
             Id = id;
