@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MotorcycleRental.Domain.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace MotorcycleRental.Domain.Aggregates.Rental
         public DateTime InitialDate { get; private set; }
         public DateTime EndDate { get; private set; }
         public DateTime ExpectedEndDate { get; private set; }
+        public DateTime? ReturnDate { get; private set; }
         public int Plan { get; private set; }
 
         public Rental(string deliveryDriverId, string motorcycleId, DateTime initialDate, DateTime endDate, 
@@ -26,6 +28,34 @@ namespace MotorcycleRental.Domain.Aggregates.Rental
             EndDate = endDate;
             ExpectedEndDate = expectedEndDate;
             Plan = plan;
+            ReturnDate = null;
+        }
+
+        public decimal GetDailyRate()
+        {
+            switch (Plan)
+            {
+                case 7:
+                    return 30;
+                case 15:
+                    return 28;
+                case 30:
+                    return 22;
+                case 45:
+                    return 20;
+                case 50:
+                    return 18;
+                default:
+                    throw new DomainException("Plan doesn't have daily rate");
+            }
+        }
+
+        public void ReturnMotorcycle(DateTime returnDate)
+        {
+            if (returnDate < InitialDate)
+                throw new DomainException("Return date cannot be before the initial date");
+
+            ReturnDate = returnDate;
         }
     }
 }
