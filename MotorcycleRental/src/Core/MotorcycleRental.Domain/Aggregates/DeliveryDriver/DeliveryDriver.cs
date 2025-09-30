@@ -11,6 +11,7 @@ namespace MotorcycleRental.Domain.Aggregates.DeliveryDriver
     public class DeliveryDriver
     {
         private const int CNPJ_LENGHT = 14;
+        private static readonly string[] AllowedCnhTypes = { "A", "B", "A+B" };
 
         public string Id { get; private set; }
         public string Name { get; private set; }
@@ -23,6 +24,9 @@ namespace MotorcycleRental.Domain.Aggregates.DeliveryDriver
             string numberCnh, string cnhImagePath)
         {
             var sanitizedCnpj = SanitizeAndValidateCnpj(cnpj);
+
+            if (AllowedCnhTypes.Contains(cnhType))
+                throw new DomainException("CNH type not allowed");
 
             Id = id;
             Name = name;
