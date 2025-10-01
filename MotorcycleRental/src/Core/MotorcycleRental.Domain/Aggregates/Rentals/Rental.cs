@@ -1,11 +1,13 @@
-﻿using MotorcycleRental.Domain.Exceptions;
+﻿using MotorcycleRental.Domain.Aggregates.DeliveryDrivers;
+using MotorcycleRental.Domain.Aggregates.Motorcycles;
+using MotorcycleRental.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MotorcycleRental.Domain.Aggregates.Rental
+namespace MotorcycleRental.Domain.Aggregates.Rentals
 {
     public class Rental
     {
@@ -17,6 +19,8 @@ namespace MotorcycleRental.Domain.Aggregates.Rental
         public DateTime ExpectedEndDate { get; private set; }
         public DateTime? ReturnDate { get; private set; }
         public int Plan { get; private set; }
+        public Motorcycle Motorcycle { get; private set; }
+        public DeliveryDriver DeliveryDriver { get; private set; }
 
         public Rental(string deliveryDriverId, string motorcycleId, DateTime initialDate, DateTime endDate, 
             DateTime expectedEndDate, int plan)

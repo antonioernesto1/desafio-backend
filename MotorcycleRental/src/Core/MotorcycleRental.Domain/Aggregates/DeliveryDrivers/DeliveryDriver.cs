@@ -1,4 +1,4 @@
-﻿using MotorcycleRental.Domain.Aggregates.DeliveryDriver.ValueObjects;
+﻿using MotorcycleRental.Domain.Aggregates.DeliveryDrivers.ValueObjects;
 using MotorcycleRental.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -6,12 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MotorcycleRental.Domain.Aggregates.DeliveryDriver
+namespace MotorcycleRental.Domain.Aggregates.DeliveryDrivers
 {
     public class DeliveryDriver
     {
         private const int CNPJ_LENGHT = 14;
-        private static readonly string[] AllowedCnhTypes = { "A", "B", "A+B" };
 
         public string Id { get; private set; }
         public string Name { get; private set; }
@@ -19,20 +18,17 @@ namespace MotorcycleRental.Domain.Aggregates.DeliveryDriver
         public DateTime BirthDate { get; private set; }
         public Cnh Cnh { get; private set; }
 
+        private DeliveryDriver() { }
 
-        public DeliveryDriver(string id, string name, string cnpj, DateTime birthDate, string cnhType, 
-            string numberCnh, string cnhImagePath)
+        public DeliveryDriver(string id, string name, string cnpj, DateTime birthDate, Cnh cnh)
         {
             var sanitizedCnpj = SanitizeAndValidateCnpj(cnpj);
-
-            if (AllowedCnhTypes.Contains(cnhType))
-                throw new DomainException("CNH type not allowed");
 
             Id = id;
             Name = name;
             Cnpj = sanitizedCnpj;
             BirthDate = birthDate;
-            Cnh = new Cnh(cnhType, numberCnh, cnhImagePath);
+            Cnh = cnh;
         }
 
         private string SanitizeAndValidateCnpj(string cnpj)
@@ -53,7 +49,7 @@ namespace MotorcycleRental.Domain.Aggregates.DeliveryDriver
             if (string.IsNullOrEmpty(path))
                 throw new DomainException("CNH image path cannot be null or empty");
 
-            Cnh = new Cnh(Cnh.CnhType, Cnh.CnhNumber, path);
+            Cnh = new Cnh(Cnh.Type, Cnh.Number, path);
         }
 
     }

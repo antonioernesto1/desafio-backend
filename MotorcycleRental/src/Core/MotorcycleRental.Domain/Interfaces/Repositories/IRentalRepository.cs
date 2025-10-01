@@ -1,4 +1,4 @@
-﻿using MotorcycleRental.Domain.Aggregates.Rental;
+﻿using MotorcycleRental.Domain.Aggregates.Rentals;
 using System;
 using System.Collections.Generic;
 using System.Linq;

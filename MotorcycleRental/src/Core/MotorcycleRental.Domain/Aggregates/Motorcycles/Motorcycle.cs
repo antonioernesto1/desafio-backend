@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MotorcycleRental.Domain.Aggregates.Motorcycle
+namespace MotorcycleRental.Domain.Aggregates.Motorcycles
 {
     public class Motorcycle
     {
