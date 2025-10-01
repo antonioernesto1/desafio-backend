@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using MotorcycleRental.Domain.Aggregates.DeliveryDriver;
-using MotorcycleRental.Domain.Aggregates.Motorcycle;
-using MotorcycleRental.Domain.Aggregates.Rental;
+using MotorcycleRental.Domain.Aggregates.DeliveryDrivers;
+using MotorcycleRental.Domain.Aggregates.Motorcycles;
+using MotorcycleRental.Domain.Aggregates.Rentals;
 
 namespace MotorcycleRental.Infrastructure.Persistence
 {
@@ -22,10 +22,12 @@ namespace MotorcycleRental.Infrastructure.Persistence
 
             modelBuilder.Entity<DeliveryDriver>(dd =>
             {
-                dd.OwnsOne(d => d.Cnh);
-
                 dd.HasIndex(d => d.Cnpj).IsUnique();
-                dd.HasIndex(d => d.Cnh.CnhNumber).IsUnique();
+
+                dd.OwnsOne(d => d.Cnh, cnhBuilder =>
+                {
+                    cnhBuilder.HasIndex(c => c.Number).IsUnique();
+                });
             });
 
             modelBuilder.Entity<Motorcycle>()
