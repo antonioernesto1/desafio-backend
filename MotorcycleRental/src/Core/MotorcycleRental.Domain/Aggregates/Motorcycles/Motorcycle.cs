@@ -9,7 +9,7 @@ namespace MotorcycleRental.Domain.Aggregates.Motorcycles
 {
     public class Motorcycle
     {
-        public string Id { get; private set; }
+        public Guid Id { get; private set; }
         public string Code { get; private set; }
         public int Year { get; set; }
         public string Model { get; private set; }
