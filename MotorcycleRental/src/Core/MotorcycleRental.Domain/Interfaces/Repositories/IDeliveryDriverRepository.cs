@@ -1,4 +1,4 @@
-﻿using MotorcycleRental.Domain.Aggregates.DeliveryDriver;
+﻿using MotorcycleRental.Domain.Aggregates.DeliveryDrivers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

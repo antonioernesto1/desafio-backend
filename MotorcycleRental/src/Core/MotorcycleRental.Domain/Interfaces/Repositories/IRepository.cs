@@ -10,6 +10,6 @@ namespace MotorcycleRental.Domain.Interfaces.Repositories
     {
         Task AddAsync(T entity);
         void Delete(T entity);
-        List<T> GetAll();
+        Task<List<T>> GetAll();
     }
 }
