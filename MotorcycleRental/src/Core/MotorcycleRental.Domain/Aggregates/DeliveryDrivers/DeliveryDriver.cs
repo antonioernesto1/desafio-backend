@@ -12,7 +12,7 @@ namespace MotorcycleRental.Domain.Aggregates.DeliveryDrivers
     {
         private const int CNPJ_LENGHT = 14;
 
-        public Guid Id { get; private set; }
+        public string Id { get; private set; }
         public string Name { get; private set; }
         public string Cnpj { get; private set; }
         public DateTime BirthDate { get; private set; }

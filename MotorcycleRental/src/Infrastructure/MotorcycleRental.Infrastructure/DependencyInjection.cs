@@ -1,12 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MotorcycleRental.Domain.Interfaces;
+using MotorcycleRental.Domain.Interfaces.Repositories;
 using MotorcycleRental.Infrastructure.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MotorcycleRental.Infrastructure.Persistence.Repositories;
 
 namespace MotorcycleRental.Infrastructure
 {
@@ -18,6 +16,12 @@ namespace MotorcycleRental.Infrastructure
             services.AddDbContext<AppDbContext>(x 
                 => x.UseNpgsql(connectionString)
                     .UseSnakeCaseNamingConvention());
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            #region Repositories
+            services.AddScoped<IMotorcycleRepository, MotorcycleRepository>();
+            #endregion
         }
     }
 }

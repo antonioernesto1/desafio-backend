@@ -1,4 +1,5 @@
-﻿using MotorcycleRental.Domain.Aggregates.Motorcycles;
+﻿using Microsoft.EntityFrameworkCore;
+using MotorcycleRental.Domain.Aggregates.Motorcycles;
 using MotorcycleRental.Domain.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,7 @@ namespace MotorcycleRental.Infrastructure.Persistence.Repositories
         public MotorcycleRepository(AppDbContext context) : base(context)
         {
         }
+
+        public async Task<bool> PlateExists(string licensePlate) => await _dbSet.AnyAsync(x => x.LicensePlate == licensePlate);
     }
 }
