@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using MotorcycleRental.Application.UseCases.Motorcycles.Shared;
+using MotorcycleRental.Application.DTOs.Motorcycles;
 using System;
 using System.Collections.Generic;
 using System.Linq;

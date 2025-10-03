@@ -1,6 +1,6 @@
 ﻿using MediatR;
+using MotorcycleRental.Application.DTOs.Motorcycles;
 using MotorcycleRental.Application.Mappers.Motorcycles;
-using MotorcycleRental.Application.UseCases.Motorcycles.Shared;
 using MotorcycleRental.Domain.Exceptions;
 using MotorcycleRental.Domain.Interfaces.Repositories;
 using System;

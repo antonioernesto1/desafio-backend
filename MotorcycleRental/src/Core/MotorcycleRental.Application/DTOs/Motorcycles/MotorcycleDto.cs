@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace MotorcycleRental.Application.UseCases.Motorcycles.Shared
+namespace MotorcycleRental.Application.DTOs.Motorcycles
 {
     public record MotorcycleDto
     {

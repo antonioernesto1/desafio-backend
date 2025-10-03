@@ -1,4 +1,4 @@
-﻿using MotorcycleRental.Application.UseCases.Motorcycles.Shared;
+﻿using MotorcycleRental.Application.DTOs.Motorcycles;
 using MotorcycleRental.Domain.Aggregates.Motorcycles;
 using System;
 using System.Collections.Generic;
