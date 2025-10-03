@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MotorcycleRental.Application.UseCases.Motorcycles.CreateMotorcycle;
+using MotorcycleRental.Application.UseCases.Motorcycles.GetMotorcycleById;
 using MotorcycleRental.Application.UseCases.Motorcycles.GetMotorcycles;
 using MotorcycleRental.Application.UseCases.Motorcycles.UpdateLicensePlate;
 
@@ -50,7 +51,14 @@ namespace MotorcycleRental.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetMotorcycleById(string id)
         {
-            return Ok();
+            var query = new GetMotorcycleByIdQuery
+            {
+                Id = id
+            };
+
+            var motorcycle = await _mediator.Send(query);
+
+            return Ok(motorcycle);
         }
     }
 }

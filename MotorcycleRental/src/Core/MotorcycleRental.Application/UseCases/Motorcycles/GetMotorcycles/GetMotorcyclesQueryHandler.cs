@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using MotorcycleRental.Application.Mappers.Motorcycles;
 using MotorcycleRental.Application.UseCases.Motorcycles.Shared;
 using MotorcycleRental.Domain.Interfaces;
 using MotorcycleRental.Domain.Interfaces.Repositories;
@@ -25,13 +26,8 @@ namespace MotorcycleRental.Application.UseCases.Motorcycles.GetMotorcycles
             var motorcycles = await _repository.GetMotorcyclesAsync(request.LicensePlate);
             
             var response = motorcycles.Select(
-                m => new MotorcycleDto
-                {
-                    Id = m.Id,
-                    LicensePlate = m.LicensePlate,
-                    Model = m.Model,
-                    Year = m.Year
-                }).ToList();
+                    m => m.MapToDto()
+                ).ToList();
 
             return response;
         }
