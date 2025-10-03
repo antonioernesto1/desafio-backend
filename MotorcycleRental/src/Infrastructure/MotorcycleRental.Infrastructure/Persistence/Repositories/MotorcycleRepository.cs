@@ -14,7 +14,18 @@ namespace MotorcycleRental.Infrastructure.Persistence.Repositories
         public MotorcycleRepository(AppDbContext context) : base(context)
         {
         }
-
         public async Task<bool> PlateExists(string licensePlate) => await _dbSet.AnyAsync(x => x.LicensePlate == licensePlate);
+
+        public async Task<List<Motorcycle>> GetMotorcyclesAsync(string? licensePlate = null)
+        {
+            var query = _dbSet.AsQueryable();
+            
+            if(!string.IsNullOrEmpty(licensePlate))
+                query = query.Where(m => m.LicensePlate == licensePlate);
+
+            var motorcycles = await query.ToListAsync();
+            
+            return motorcycles;
+        }
     }
 }

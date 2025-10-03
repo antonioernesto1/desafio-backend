@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MotorcycleRental.Application.UseCases.Motorcycles.CreateMotorcycle;
+using MotorcycleRental.Application.UseCases.Motorcycles.GetMotorcycles;
 
 namespace MotorcycleRental.API.Controllers
 {
@@ -22,6 +23,18 @@ namespace MotorcycleRental.API.Controllers
             var id = await _mediator.Send(request);
 
             return Created();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetMotorcycles([FromQuery(Name = "placa")] string? licensePlate = null)
+        {
+            var query = new GetMotorcyclesQuery
+            {
+                LicensePlate = licensePlate
+            };
+
+            var motorcycles = await _mediator.Send(query);
+            return Ok(motorcycles);
         }
 
         [HttpGet("{id}")]

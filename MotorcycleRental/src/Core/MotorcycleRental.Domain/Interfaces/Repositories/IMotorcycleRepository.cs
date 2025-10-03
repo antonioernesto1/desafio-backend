@@ -10,5 +10,7 @@ namespace MotorcycleRental.Domain.Interfaces.Repositories
     public interface IMotorcycleRepository : IRepository<Motorcycle>
     {
         public Task<bool> PlateExists(string licensePlate);
+
+        public Task<List<Motorcycle>> GetMotorcyclesAsync(string? licensePlate = null);
     }
 }
