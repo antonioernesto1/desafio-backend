@@ -33,6 +33,11 @@ namespace MotorcycleRental.Infrastructure.Persistence
             modelBuilder.Entity<Motorcycle>()
                 .HasIndex(m => m.LicensePlate)
                 .IsUnique();
+
+            modelBuilder.Entity<Motorcycle>()
+                .HasMany(m => m.Rentals)
+                .WithOne(r => r.Motorcycle)
+                .HasForeignKey(r => r.MotorcycleId);
         }
     }
 }

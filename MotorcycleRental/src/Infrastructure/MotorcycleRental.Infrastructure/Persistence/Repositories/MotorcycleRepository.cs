@@ -29,5 +29,9 @@ namespace MotorcycleRental.Infrastructure.Persistence.Repositories
         }
 
         public async Task<Motorcycle> GetByIdAsync(string id) => await _dbSet.FirstOrDefaultAsync(m => m.Id == id);
+
+        public async Task<bool> ExistsAsync(string id) => await _dbSet.AnyAsync(m =>m.Id == id);
+        public async Task<bool> HasActiveRentals(string id) 
+            => await _dbSet.AnyAsync(m => m.Id == id && m.Rentals.Any(r => r.ReturnDate == null));
     }
 }

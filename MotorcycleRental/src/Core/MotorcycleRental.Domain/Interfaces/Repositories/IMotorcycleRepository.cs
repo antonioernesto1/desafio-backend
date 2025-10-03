@@ -12,5 +12,7 @@ namespace MotorcycleRental.Domain.Interfaces.Repositories
         public Task<bool> PlateExists(string licensePlate);
         public Task<Motorcycle> GetByIdAsync(string id);
         public Task<List<Motorcycle>> GetMotorcyclesAsync(string? licensePlate = null);
+        public Task<bool> ExistsAsync(string id);
+        public Task<bool> HasActiveRentals(string id);
     }
 }

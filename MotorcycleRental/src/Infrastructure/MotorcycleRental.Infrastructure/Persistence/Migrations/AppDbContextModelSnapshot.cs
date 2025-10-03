@@ -160,7 +160,7 @@ namespace MotorcycleRental.Infrastructure.Persistence.Migrations
                                 .IsUnique()
                                 .HasDatabaseName("ix_delivery_drivers_cnh_number");
 
-                            b1.ToTable("delivery_drivers");
+                            b1.ToTable("delivery_drivers", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("DeliveryDriverId")

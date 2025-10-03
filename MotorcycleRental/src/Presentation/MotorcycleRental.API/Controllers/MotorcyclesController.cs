@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MotorcycleRental.Application.UseCases.Motorcycles.CreateMotorcycle;
+using MotorcycleRental.Application.UseCases.Motorcycles.DeleteMotorcycle;
 using MotorcycleRental.Application.UseCases.Motorcycles.GetMotorcycleById;
 using MotorcycleRental.Application.UseCases.Motorcycles.GetMotorcycles;
 using MotorcycleRental.Application.UseCases.Motorcycles.UpdateLicensePlate;
@@ -59,6 +60,16 @@ namespace MotorcycleRental.API.Controllers
             var motorcycle = await _mediator.Send(query);
 
             return Ok(motorcycle);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMotorcycle(string id)
+        {
+            var cmd = new DeleteMotorcycleCommand { Id = id };
+
+            await _mediator.Send(cmd);
+
+            return Ok();
         }
     }
 }

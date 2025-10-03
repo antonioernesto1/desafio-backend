@@ -1,4 +1,5 @@
-﻿using MotorcycleRental.Domain.Exceptions;
+﻿using MotorcycleRental.Domain.Aggregates.Rentals;
+using MotorcycleRental.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace MotorcycleRental.Domain.Aggregates.Motorcycles
         public int Year { get; set; }
         public string Model { get; private set; }
         public string LicensePlate { get; private set; }
+
+        public IEnumerable<Rental> Rentals { get; set; }
 
         public Motorcycle(string id, int year, string model, string licensePlate)
         {
