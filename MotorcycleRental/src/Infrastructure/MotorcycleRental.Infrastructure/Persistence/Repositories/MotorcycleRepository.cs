@@ -14,7 +14,7 @@ namespace MotorcycleRental.Infrastructure.Persistence.Repositories
         public MotorcycleRepository(AppDbContext context) : base(context)
         {
         }
-        public async Task<bool> PlateExists(string licensePlate) => await _dbSet.AnyAsync(x => x.LicensePlate == licensePlate);
+        public async Task<bool> PlateExists(string licensePlate) => await _dbSet.AnyAsync(m => m.LicensePlate == licensePlate);
 
         public async Task<List<Motorcycle>> GetMotorcyclesAsync(string? licensePlate = null)
         {
@@ -27,5 +27,7 @@ namespace MotorcycleRental.Infrastructure.Persistence.Repositories
             
             return motorcycles;
         }
+
+        public async Task<Motorcycle> GetByIdAsync(string id) => await _dbSet.FirstOrDefaultAsync(m => m.Id == id);
     }
 }

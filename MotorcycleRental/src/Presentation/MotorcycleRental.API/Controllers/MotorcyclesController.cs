@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MotorcycleRental.Application.UseCases.Motorcycles.CreateMotorcycle;
 using MotorcycleRental.Application.UseCases.Motorcycles.GetMotorcycles;
+using MotorcycleRental.Application.UseCases.Motorcycles.UpdateLicensePlate;
 
 namespace MotorcycleRental.API.Controllers
 {
@@ -35,6 +36,15 @@ namespace MotorcycleRental.API.Controllers
 
             var motorcycles = await _mediator.Send(query);
             return Ok(motorcycles);
+        }
+
+        [HttpPut("{id}/placa")]
+        public async Task<IActionResult> UpdateLicensePlate(string id, [FromBody] UpdateLicensePlateCommand request)
+        {
+            request.Id = id;
+            await _mediator.Send(request);
+
+            return Ok("Placa modificada com sucesso");
         }
 
         [HttpGet("{id}")]
