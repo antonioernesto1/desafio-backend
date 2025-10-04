@@ -1,12 +1,7 @@
 ﻿using MotorcycleRental.Application.Interfaces;
 using MotorcycleRental.Domain.Events;
-using RabbitMQ.Client;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using MotorcycleRental.Domain.Interfaces.Repositories;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace MotorcycleConsumer
 {
@@ -14,13 +9,15 @@ namespace MotorcycleConsumer
     {
         private readonly IMessageBrokerService _messageBrokerService;
         private readonly IServiceProvider _serviceProvider;
-
+        private readonly INoSqlRepository _noSqlRepository;
         public MotorcycleCreatedConsumerWorker(
             IMessageBrokerService messageBrokerService,
-            IServiceProvider serviceProvider)
+            IServiceProvider serviceProvider,
+            INoSqlRepository noSqlRepository)
         {
             _messageBrokerService = messageBrokerService;
             _serviceProvider = serviceProvider;
+            _noSqlRepository = noSqlRepository;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -35,14 +32,14 @@ namespace MotorcycleConsumer
 
         private async Task ProcessMessageAsync(string message)
         {
-
             try
             {
-                var payload = JsonSerializer.Deserialize<MotorcycleCreatedEvent>(message);
-               
-                //TODO: Save to MongoDB events schema
-
                 using var scope = _serviceProvider.CreateScope();
+
+                var payload = JsonSerializer.Deserialize<MotorcycleCreatedEvent>(message);
+                var obj = new { id = payload.MotorcycleId, year =  payload.Year };
+                
+                await _noSqlRepository.SaveAsync("motorcycles_2024", obj);
             }
             catch (Exception ex)
             {

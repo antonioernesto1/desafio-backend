@@ -3,6 +3,7 @@ using MotorcycleRental.Application;
 using MotorcycleRental.Infrastructure;
 
 var builder = Host.CreateApplicationBuilder(args);
+builder.Services.AddNoSql(builder.Configuration);
 builder.Services.AddMessageBroker(builder.Configuration);
 builder.Services.AddHostedService<MotorcycleCreatedConsumerWorker>();
 

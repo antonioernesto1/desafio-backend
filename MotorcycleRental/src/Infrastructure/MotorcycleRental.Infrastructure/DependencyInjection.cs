@@ -7,6 +7,7 @@ using MotorcycleRental.Domain.Interfaces.Repositories;
 using MotorcycleRental.Infrastructure.Messaging;
 using MotorcycleRental.Infrastructure.Persistence;
 using MotorcycleRental.Infrastructure.Persistence.Repositories;
+using MotorcycleRental.Infrastructure.Persistence.Repositories.NoSql;
 
 namespace MotorcycleRental.Infrastructure
 {
@@ -24,6 +25,11 @@ namespace MotorcycleRental.Infrastructure
             #region Repositories
             services.AddScoped<IMotorcycleRepository, MotorcycleRepository>();
             #endregion
+        }
+
+        public static void AddNoSql(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton<INoSqlRepository, MongoNoSqlRepository>();
         }
 
         public static void AddMessageBroker(this IServiceCollection services, IConfiguration configuration)
