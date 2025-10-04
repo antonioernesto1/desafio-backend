@@ -9,5 +9,6 @@ namespace MotorcycleRental.Application.Interfaces
     public interface IMessageBrokerService
     {
         Task Publish(string topic, object message);
+        Task StartConsuming(string queueName, string routingKey, Func<string, Task> messageHandler, CancellationToken cancellationToken);
     }
 }

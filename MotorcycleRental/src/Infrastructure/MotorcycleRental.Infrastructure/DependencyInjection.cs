@@ -12,10 +12,10 @@ namespace MotorcycleRental.Infrastructure
 {
     public static class DependencyInjection
     {
-        public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static void AddDatabase(this IServiceCollection services, IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("Default");
-            services.AddDbContext<AppDbContext>(x 
+            services.AddDbContext<AppDbContext>(x
                 => x.UseNpgsql(connectionString)
                     .UseSnakeCaseNamingConvention());
 
@@ -24,7 +24,10 @@ namespace MotorcycleRental.Infrastructure
             #region Repositories
             services.AddScoped<IMotorcycleRepository, MotorcycleRepository>();
             #endregion
+        }
 
+        public static void AddMessageBroker(this IServiceCollection services, IConfiguration configuration)
+        {
             services.AddSingleton<IMessageBrokerService, RabbitMqService>();
         }
     }

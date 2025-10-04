@@ -8,7 +8,8 @@ builder.Logging.AddFilter("LuckyPennySoftware.MediatR.License", LogLevel.None);
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
-builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddDatabase(builder.Configuration);
+builder.Services.AddMessageBroker(builder.Configuration);
 builder.Services.AddCoreServices();
 
 var app = builder.Build();
