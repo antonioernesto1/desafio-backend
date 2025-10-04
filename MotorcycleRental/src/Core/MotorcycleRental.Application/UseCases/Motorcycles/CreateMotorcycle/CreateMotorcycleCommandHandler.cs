@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MotorcycleRental.Domain.Aggregates.Motorcycles;
+using MotorcycleRental.Domain.Events;
 using MotorcycleRental.Domain.Exceptions;
 using MotorcycleRental.Domain.Interfaces;
 using MotorcycleRental.Domain.Interfaces.Repositories;
@@ -15,10 +16,13 @@ namespace MotorcycleRental.Application.UseCases.Motorcycles.CreateMotorcycle
     {
         private readonly IMotorcycleRepository _repository;
         private readonly IUnitOfWork _unitOfWork;
-        public CreateMotorcycleCommandHandler(IMotorcycleRepository repository, IUnitOfWork unitOfWork)
+        private readonly IMediator _mediator;
+        public CreateMotorcycleCommandHandler(IMotorcycleRepository repository, IUnitOfWork unitOfWork, 
+            IMediator mediator)
         {
             _repository = repository;
             _unitOfWork = unitOfWork;
+            _mediator = mediator;
         }
 
         public async Task<string> Handle(CreateMotorcycleCommand request, CancellationToken cancellationToken)
@@ -32,7 +36,7 @@ namespace MotorcycleRental.Application.UseCases.Motorcycles.CreateMotorcycle
             await _repository.AddAsync(motorcycle);
             await _unitOfWork.SaveChangesAsync();
 
-            //TODO: Implement motorcycle created event. Need to publish it using MediatR
+            await _mediator.Publish(new MotorcycleCreatedEvent(motorcycle.Id, motorcycle.Year));
             
             return motorcycle.Id;
         }

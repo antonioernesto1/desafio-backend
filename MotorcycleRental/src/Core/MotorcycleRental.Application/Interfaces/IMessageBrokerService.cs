@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MotorcycleRental.Application.Interfaces
+{
+    public interface IMessageBrokerService
+    {
+        Task Publish(string topic, object message);
+        Task StartConsuming(string queueName, string routingKey, Func<string, Task> messageHandler, CancellationToken cancellationToken);
+    }
+}
