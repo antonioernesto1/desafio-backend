@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MotorcycleRental.Infrastructure.Persistence;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MotorcycleRental.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251002234013_RemoveCodeFromMotorcycles")]
+    partial class RemoveCodeFromMotorcycles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,7 +163,7 @@ namespace MotorcycleRental.Infrastructure.Persistence.Migrations
                                 .IsUnique()
                                 .HasDatabaseName("ix_delivery_drivers_cnh_number");
 
-                            b1.ToTable("delivery_drivers", (string)null);
+                            b1.ToTable("delivery_drivers");
 
                             b1.WithOwner()
                                 .HasForeignKey("DeliveryDriverId")

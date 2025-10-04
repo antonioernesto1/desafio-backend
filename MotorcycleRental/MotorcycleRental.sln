@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36511.14 d17.14
+VisualStudioVersion = 17.14.36511.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorcycleRental.Domain", "src\Core\MotorcycleRental.Domain\MotorcycleRental.Domain.csproj", "{7DD6E4AE-D0BF-43C5-BA81-0358905038E6}"
 EndProject
@@ -16,6 +16,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{81300E90-642F-4A5A-92C1-99B444E28EDC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorcycleRental.API", "src\Presentation\MotorcycleRental.API\MotorcycleRental.API.csproj", "{D602470B-A0C3-4B30-BF60-953516AD6FCF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workers", "Workers", "{97104AB1-A83A-401C-8491-33F9983BC71A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Consumers", "Consumers", "{626BD7A9-F91F-4490-A41F-992E95C816A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorcycleRental.MotorcycleConsumer", "src\Workers\Consumers\MotorcycleConsumer\MotorcycleRental.MotorcycleConsumer.csproj", "{279DA4D6-68FD-4D3E-BEB1-A8EFB98FA67F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,10 @@ Global
 		{D602470B-A0C3-4B30-BF60-953516AD6FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D602470B-A0C3-4B30-BF60-953516AD6FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D602470B-A0C3-4B30-BF60-953516AD6FCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{279DA4D6-68FD-4D3E-BEB1-A8EFB98FA67F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{279DA4D6-68FD-4D3E-BEB1-A8EFB98FA67F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{279DA4D6-68FD-4D3E-BEB1-A8EFB98FA67F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{279DA4D6-68FD-4D3E-BEB1-A8EFB98FA67F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +58,8 @@ Global
 		{86122D1F-F763-4AF2-9963-C703F2891B64} = {CBA6316B-1371-4671-90C9-EE42DE3E1A79}
 		{33226292-024D-4E34-946C-9E275A508FF7} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{D602470B-A0C3-4B30-BF60-953516AD6FCF} = {81300E90-642F-4A5A-92C1-99B444E28EDC}
+		{626BD7A9-F91F-4490-A41F-992E95C816A3} = {97104AB1-A83A-401C-8491-33F9983BC71A}
+		{279DA4D6-68FD-4D3E-BEB1-A8EFB98FA67F} = {626BD7A9-F91F-4490-A41F-992E95C816A3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B8CE81E-9994-4955-A087-A737C9A76B1D}

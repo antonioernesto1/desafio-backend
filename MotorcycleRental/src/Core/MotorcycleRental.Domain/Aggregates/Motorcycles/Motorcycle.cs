@@ -1,4 +1,5 @@
-﻿using MotorcycleRental.Domain.Exceptions;
+﻿using MotorcycleRental.Domain.Aggregates.Rentals;
+using MotorcycleRental.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,13 @@ namespace MotorcycleRental.Domain.Aggregates.Motorcycles
     public class Motorcycle
     {
         public string Id { get; private set; }
-        public string Code { get; private set; }
         public int Year { get; set; }
         public string Model { get; private set; }
         public string LicensePlate { get; private set; }
 
-        public Motorcycle(string id, string code, int year, string model, string licensePlate)
+        public IEnumerable<Rental> Rentals { get; set; }
+
+        public Motorcycle(string id, int year, string model, string licensePlate)
         {
             if(year > DateTime.Now.Year)
             {
@@ -23,7 +25,6 @@ namespace MotorcycleRental.Domain.Aggregates.Motorcycles
             }
 
             Id = id;
-            Code = code;
             Year = year;
             Model = model;
             LicensePlate = licensePlate;
