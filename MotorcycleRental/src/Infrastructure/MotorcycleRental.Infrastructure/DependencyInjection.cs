@@ -8,6 +8,7 @@ using MotorcycleRental.Infrastructure.Messaging;
 using MotorcycleRental.Infrastructure.Persistence;
 using MotorcycleRental.Infrastructure.Persistence.Repositories;
 using MotorcycleRental.Infrastructure.Persistence.Repositories.NoSql;
+using MotorcycleRental.Infrastructure.Storage;
 
 namespace MotorcycleRental.Infrastructure
 {
@@ -24,7 +25,13 @@ namespace MotorcycleRental.Infrastructure
 
             #region Repositories
             services.AddScoped<IMotorcycleRepository, MotorcycleRepository>();
+            services.AddScoped<IDeliveryDriverRepository, DeliveryDriverRepository>();
             #endregion
+        }
+
+        public static void AddStorageService(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton<IStorageService, LocalStorageService>();
         }
 
         public static void AddNoSql(this IServiceCollection services, IConfiguration configuration)

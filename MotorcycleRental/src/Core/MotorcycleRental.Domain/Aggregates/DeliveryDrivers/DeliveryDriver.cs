@@ -49,7 +49,7 @@ namespace MotorcycleRental.Domain.Aggregates.DeliveryDrivers
             if (string.IsNullOrEmpty(path))
                 throw new DomainException("CNH image path cannot be null or empty");
 
-            Cnh = new Cnh(Cnh.Type, Cnh.Number, path);
+            Cnh.SetImage(path);
         }
 
     }

@@ -15,7 +15,7 @@ namespace MotorcycleRental.Domain.Aggregates.DeliveryDrivers.ValueObjects
         public string Type { get; set; }
         public string Number { get; set; }
         public string ImagePath { get; private set; }
-        public Cnh(string type, string number, string imagePath)
+        public Cnh(string type, string number)
         {
             if (string.IsNullOrWhiteSpace(type) || !AllowedCnhTypes.Contains(type))
             {
@@ -29,9 +29,11 @@ namespace MotorcycleRental.Domain.Aggregates.DeliveryDrivers.ValueObjects
 
             Type = type;
             Number = number;
-            ImagePath = imagePath;
         }
 
-
+        public void SetImage(string imagePath)
+        {
+            ImagePath = imagePath;
+        }
     }
 }

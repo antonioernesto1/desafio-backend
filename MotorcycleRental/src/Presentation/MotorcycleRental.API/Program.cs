@@ -10,6 +10,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddDatabase(builder.Configuration);
 builder.Services.AddMessageBroker(builder.Configuration);
+builder.Services.AddStorageService(builder.Configuration);
 builder.Services.AddCoreServices();
 
 var app = builder.Build();
