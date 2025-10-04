@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MotorcycleRental.Application.Interfaces;
 using MotorcycleRental.Domain.Interfaces;
 using MotorcycleRental.Domain.Interfaces.Repositories;
+using MotorcycleRental.Infrastructure.Messaging;
 using MotorcycleRental.Infrastructure.Persistence;
 using MotorcycleRental.Infrastructure.Persistence.Repositories;
 
@@ -22,6 +24,8 @@ namespace MotorcycleRental.Infrastructure
             #region Repositories
             services.AddScoped<IMotorcycleRepository, MotorcycleRepository>();
             #endregion
+
+            services.AddSingleton<IMessageBrokerService, RabbitMqService>();
         }
     }
 }

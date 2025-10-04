@@ -17,9 +17,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+    <PackageReference Include="RabbitMQ.Client" Version="7.1.2" />
+    <PackageReference Include="RabbitMQ.Client.Core.DependencyInjection" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\MotorcycleRental.Application\MotorcycleRental.Application.csproj" />
     <ProjectReference Include="..\..\Core\MotorcycleRental.Domain\MotorcycleRental.Domain.csproj" />
   </ItemGroup>
 
