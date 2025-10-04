@@ -1,6 +1,6 @@
-using MotorcycleConsumer;
 using MotorcycleRental.Application;
 using MotorcycleRental.Infrastructure;
+using MotorcycleRental.MotorcycleConsumer;
 
 var builder = Host.CreateApplicationBuilder(args);
 builder.Services.AddNoSql(builder.Configuration);

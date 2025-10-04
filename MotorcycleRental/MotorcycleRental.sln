@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workers", "Workers", "{9710
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Consumers", "Consumers", "{626BD7A9-F91F-4490-A41F-992E95C816A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorcycleConsumer", "src\Workers\Consumers\MotorcycleConsumer\MotorcycleConsumer.csproj", "{279DA4D6-68FD-4D3E-BEB1-A8EFB98FA67F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorcycleRental.MotorcycleConsumer", "src\Workers\Consumers\MotorcycleConsumer\MotorcycleRental.MotorcycleConsumer.csproj", "{279DA4D6-68FD-4D3E-BEB1-A8EFB98FA67F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

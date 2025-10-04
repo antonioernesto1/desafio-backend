@@ -3,7 +3,7 @@ using MotorcycleRental.Domain.Events;
 using MotorcycleRental.Domain.Interfaces.Repositories;
 using System.Text.Json;
 
-namespace MotorcycleConsumer
+namespace MotorcycleRental.MotorcycleConsumer
 {
     public class MotorcycleCreatedConsumerWorker : BackgroundService
     {
