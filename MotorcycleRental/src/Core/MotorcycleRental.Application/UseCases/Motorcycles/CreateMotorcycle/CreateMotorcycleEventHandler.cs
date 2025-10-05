@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MotorcycleRental.Application.UseCases.Motorcycles.CreateMotorcycle
 {
-    internal class CreateMotorcycleEventHandler : INotificationHandler<MotorcycleCreatedEvent>
+    public class CreateMotorcycleEventHandler : INotificationHandler<MotorcycleCreatedEvent>
     {
         private const int YEAR_TO_PUBLISH = 2024;
         private readonly IMessageBrokerService _messageBrokerService;
