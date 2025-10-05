@@ -9,5 +9,7 @@ namespace MotorcycleRental.Domain.Interfaces.Repositories
 {
     public interface IDeliveryDriverRepository : IRepository<DeliveryDriver>
     {
+        public Task<bool> CnpjExists(string cnpj);
+        Task<DeliveryDriver> GetByIdAsync(string id);
     }
 }
