@@ -29,7 +29,7 @@ namespace MotorcycleRental.Application.UseCases.Motorcycles.UpdateLicensePlate
             var motorcycle = await _repository.GetByIdAsync(request.Id);
 
             if (request.LicensePlate == motorcycle.LicensePlate)
-                throw new NotFoundException($"Motorcycle with ID '{request.Id}' was not found.");
+                throw new NotFoundException("Moto não encontrada");
 
             if (motorcycle is null)
                 throw new DomainException("The new license plate value cannot be the same as the currently registered value.");

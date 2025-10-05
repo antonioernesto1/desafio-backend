@@ -2,6 +2,7 @@ using MotorcycleRental.Infrastructure;
 using MotorcycleRental.Application;
 using Microsoft.EntityFrameworkCore;
 using MotorcycleRental.Infrastructure.Persistence;
+using MotorcycleRental.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ builder.Services.AddDatabase(builder.Configuration);
 builder.Services.AddMessageBroker(builder.Configuration);
 builder.Services.AddStorageService(builder.Configuration);
 builder.Services.AddCoreServices();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
 var app = builder.Build();
 
@@ -31,6 +33,8 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+
+app.UseExceptionHandler(opt => { });
 
 app.UseAuthorization();
 

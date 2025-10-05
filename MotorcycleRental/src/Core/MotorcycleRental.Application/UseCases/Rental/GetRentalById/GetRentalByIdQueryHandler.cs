@@ -23,7 +23,7 @@ namespace MotorcycleRental.Application.UseCases.Rental.GetRentalById
 
             if (rental == null)
             {
-                throw new NotFoundException("Rental not found.");
+                throw new NotFoundException("Locação não encontrada");
             }
 
             var rentalDto = new RentalDto

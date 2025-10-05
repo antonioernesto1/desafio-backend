@@ -25,7 +25,7 @@ namespace MotorcycleRental.Application.UseCases.Motorcycles.GetMotorcycleById
             var motorcycle = await _repository.GetByIdAsync(request.Id);
             
             if (motorcycle is null)
-                throw new NotFoundException($"Motorcycle with id '{request.Id}' not found");
+                throw new NotFoundException("Moto não encontrada");
 
             return motorcycle.MapToDto();
         }

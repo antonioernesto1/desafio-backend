@@ -25,7 +25,7 @@ namespace MotorcycleRental.Application.UseCases.Motorcycles.DeleteMotorcycle
             var motorcycle = await _repository.GetByIdAsync(request.Id);
 
             if (motorcycle == null)
-                throw new NotFoundException($"Motorcycle with id '{request.Id}' not found");
+                throw new NotFoundException("Moto não encontrada");
 
             var anyRentals = await _repository.HasActiveRentals(motorcycle.Id);
 

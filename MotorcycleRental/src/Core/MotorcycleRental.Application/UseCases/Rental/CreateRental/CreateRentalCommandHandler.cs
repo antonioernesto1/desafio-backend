@@ -29,7 +29,7 @@ namespace MotorcycleRental.Application.UseCases.Rental.CreateRental
             var deliveryDriver = await _deliveryDriverRepository.GetByIdAsync(request.DeliveryDriverId);
             if (deliveryDriver == null)
             {
-                throw new NotFoundException("Delivery driver not found.");
+                throw new DomainException("Dados inválidos");
             }
 
             if (deliveryDriver.Cnh.Type != "A")
@@ -40,7 +40,7 @@ namespace MotorcycleRental.Application.UseCases.Rental.CreateRental
             var motorcycle = await _motorcycleRepository.GetByIdAsync(request.MotorcycleId);
             if (motorcycle == null)
             {
-                throw new NotFoundException("Motorcycle not found.");
+                throw new DomainException("Dados inválidos");
             }
 
             var motorcycleHasActiveRental = await _motorcycleRepository.HasActiveRentals(request.MotorcycleId);
