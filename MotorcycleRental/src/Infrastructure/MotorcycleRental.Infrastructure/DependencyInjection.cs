@@ -26,6 +26,7 @@ namespace MotorcycleRental.Infrastructure
             #region Repositories
             services.AddScoped<IMotorcycleRepository, MotorcycleRepository>();
             services.AddScoped<IDeliveryDriverRepository, DeliveryDriverRepository>();
+            services.AddScoped<IRentalRepository, RentalRepository>();
             #endregion
         }
 

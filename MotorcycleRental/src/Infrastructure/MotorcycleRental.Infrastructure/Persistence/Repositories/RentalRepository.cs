@@ -1,4 +1,5 @@
-﻿using MotorcycleRental.Domain.Aggregates.Rentals;
+﻿using Microsoft.EntityFrameworkCore;
+using MotorcycleRental.Domain.Aggregates.Rentals;
 using MotorcycleRental.Domain.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,7 @@ namespace MotorcycleRental.Infrastructure.Persistence.Repositories
         public RentalRepository(AppDbContext context) : base(context)
         {
         }
+
+        public async Task<Rental> GetByIdAsync(string id)  => await _dbSet.FirstOrDefaultAsync(x => x.Id == new Guid(id));
     }
 }
