@@ -9,5 +9,6 @@ namespace MotorcycleRental.Domain.Interfaces.Repositories
 {
     public interface IRentalRepository : IRepository<Rental>
     {
+        Task<Rental> GetByIdAsync(string id);
     }
 }

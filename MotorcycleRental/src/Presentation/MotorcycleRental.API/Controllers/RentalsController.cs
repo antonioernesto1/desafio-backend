@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MotorcycleRental.Application.UseCases.Rental.CreateRental;
+using MotorcycleRental.Application.UseCases.Rental.GetRentalById;
 using System.Threading.Tasks;
 
 namespace MotorcycleRental.API.Controllers
@@ -23,6 +24,14 @@ namespace MotorcycleRental.API.Controllers
             var id = await _mediator.Send(request);
 
             return Created();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetRentalById(string id)
+        {
+            var query = new GetRentalByIdQuery { Id = id };
+            var rental = await _mediator.Send(query);
+            return Ok(rental);
         }
     }
 }
