@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MotorcycleRental.Application.UseCases.Rental.CreateRental;
 using MotorcycleRental.Application.UseCases.Rental.GetRentalById;
+using MotorcycleRental.Application.UseCases.Rental.ReturnRental;
 using System.Threading.Tasks;
 
 namespace MotorcycleRental.API.Controllers
@@ -32,6 +33,14 @@ namespace MotorcycleRental.API.Controllers
             var query = new GetRentalByIdQuery { Id = id };
             var rental = await _mediator.Send(query);
             return Ok(rental);
+        }
+
+        [HttpPut("{id}/devolucao")]
+        public async Task<IActionResult> ReturnRental(string id, [FromBody] ReturnRentalCommand request)
+        {
+            request.Id = id;
+            await _mediator.Send(request);
+            return Ok(new { mensagem = "Data de devolução informada com sucesso" });
         }
     }
 }
