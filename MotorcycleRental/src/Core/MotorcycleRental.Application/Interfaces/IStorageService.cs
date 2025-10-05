@@ -10,5 +10,6 @@ namespace MotorcycleRental.Application.Interfaces
     {
         Task<string> SaveBase64FileAsync(string fileName, string base64Content, string? folder = null);
         Task<string> SaveFileAsync(string fileName, byte[] fileContent, string? folder = null);
+        Task<bool> DeleteAsync(string path);
     }
 }

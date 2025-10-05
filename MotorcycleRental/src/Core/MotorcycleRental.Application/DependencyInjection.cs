@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using MotorcycleRental.Application.UseCases.Motorcycles.CreateMotorcycle;
-using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;

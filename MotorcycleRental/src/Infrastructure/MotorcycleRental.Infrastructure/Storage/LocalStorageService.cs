@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MotorcycleRental.Application.Interfaces;
+using SharpCompress.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,7 +54,20 @@ namespace MotorcycleRental.Infrastructure.Storage
                 : Path.Combine(folder, uniqueFileName);
 
             return relativePath;
+        }
 
+        public Task<bool> DeleteAsync(string path)
+        {
+            var fullPath = Path.Combine(_basePath, path);
+            
+            if (File.Exists(fullPath))
+            {
+                File.Delete(fullPath);
+
+                return Task.FromResult(true);
+            }
+
+            return Task.FromResult(false);
         }
     }
 }

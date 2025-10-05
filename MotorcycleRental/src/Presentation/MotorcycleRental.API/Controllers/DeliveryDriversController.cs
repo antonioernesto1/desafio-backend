@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MotorcycleRental.Application.UseCases.DeliveryDrivers.CreateDeliveryDriver;
+using MotorcycleRental.Application.UseCases.DeliveryDrivers.UpdateCnhImage;
 
 namespace MotorcycleRental.API.Controllers
 {
@@ -18,6 +19,14 @@ namespace MotorcycleRental.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateDeliveryDriver(CreateDeliveryDriverCommand request)
         {
+            await _mediator.Send(request);
+            return Created();
+        }
+
+        [HttpPost("{id}/cnh")]
+        public async Task<IActionResult> UpdateCnhImage(UpdateCnhImageCommand request, string id)
+        {
+            request.Id = id;
             await _mediator.Send(request);
             return Created();
         }

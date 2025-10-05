@@ -16,5 +16,6 @@ namespace MotorcycleRental.Infrastructure.Persistence.Repositories
         }
 
         public async Task<bool> CnpjExists(string cnpj) => await _dbSet.AnyAsync(x => x.Cnpj == cnpj);
+        public async Task<DeliveryDriver> GetByIdAsync(string id) => await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
     }
 }
