@@ -45,7 +45,6 @@ Siga os passos abaixo para configurar e executar o ambiente de desenvolvimento l
 
 4.  **Acesse a API:**
     *   A API estará disponível em `http://localhost:8080`.
-    *   Você pode encontrar a especificação da API e interagir com ela através do Swagger em `http://localhost:8080/swagger`.
 
 ## Configuração do .env
 
